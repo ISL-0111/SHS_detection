@@ -35,10 +35,11 @@ As of Dec.01
 * Three different models were evaluated, including Mask2Former with a 1024 × 1024 input size as described above.
 * The Mask2Former (1024 × 1024) model, combined with Post-processing Steps 1, 2, and 3 produced the most balanced results.
 * Its overall performance was: *'Precision' = 77.51%, 'Recall'= 72.64%*
+* For more details, please refer to `4.Post-Processing/Post-Processing with Evaluation/Readme.md`
 
 <img src="images/evaluation.png" width="500" height="500">
 
-*Remarks: S1 = Step1, S2= Step1~2, S3=Step1~3, S4=Step1~4*
+*Remarks: S1 = Step1, S2= Step1+2, S3=Step1+2+3, S4=Step1+2+3+4*
 
 **File Structure** 
 
@@ -61,3 +62,4 @@ As of Dec.01
 └─ requirements.txt
 
 ```
+
