@@ -1,0 +1,92 @@
+<Architecture?
+Family / backbone: Hugging Face Mask2Former with Swin-Small backbone
+(encoder_name="facebook/mask2former-swin-small-ade-semantic"; wrapper class: PVModel(pl.LightningModule) in model_M_patched.py).
+Task/outputs: multi-class semantic segmentation; model returns per-pixel logits (B, C, H, W).
+Classes (C=4): ["background","PV_normal","PV_heater","PV_pool"] with ignore_index=255.
+Input channels: 3 (RGB).
+Pre/post-processing: handled in your own pipeline (HF processor set to no-resize/no-normalize in the module).
+
+<Loss & Metrics>
+Loss: Cross-Entropy (CE) with optional class weights, plus optional Dice loss
+(ce_weight=1.0, dice_weight=0.0 by default).
+Key metrics (logged each epoch):
+valid_avg_PV_iou, valid_macro_fg_mIoU, valid_macro_fg_precision, valid_macro_fg_recall, valid_macro_fg_f1, valid_macro_all_mIoU, valid_micro_mIoU, plus per-class Precision/Recall/IoU/F1.
+(See callbacks_csv.py for exact column names.)
+
+<Optimizer & LR Schedule>
+Optimizer: AdamW(lr=3e-4, weight_decay=1e-4) (defaults).
+Schedulers (combined):
+Per-step warm-up LambdaLR for 500 steps (0 → base_lr).
+Per-epoch cosine CosineAnnealingLR with T_max = max_epochs (default 50).
+(So the “base” LR is 3e-4 unless you pass --lr.)
+
+<Data pipeline & Trainer (most relevant defaults)>
+Image size: --img_size 320
+Batch size: --batch_size 8
+Epochs: --epochs 50
+Precision: --precision "16-mixed"
+DDP strategy: --strategy "ddp_find_unused_parameters_false"
+Workers: --workers 4
+Augmentations: Albumentations with flips + light affine (scale/translate/rotate), padding + random crop to a fixed square, occasional noise/blur, and HF-style normalization path (norm_mode="hf255").
+CLI for LR & WD: --lr, --weight_decay.
+
+<Logging & Outputs (where things go)>
+Training logs & checkpoints:
+logs/Mask2Former_run/ (fixed name in train_M_Sep.04_ddp.py right now).
+Contents (from callbacks_csv.py + CSVLogger):
+checkpoints/epoch=...-valid_macro_fg_mIoU=....ckpt
+train_epoch.csv, valid_epoch.csv, metrics_epoch_per_class.csv
+metrics.csv, hparams.yaml (if present), plus Lightning CSV/TensorBoard logs
+Evaluation / prediction artifacts:
+When --save_preds true, the script saves under:
+JSON coords: prediction_outputs_Mask2Former[_<pred_out_version>]/
+Color PNG masks: predicted_masks_Mask2Former[_<pred_out_version>]/
+(Use --pred_out_version to avoid overwriting between experiments.)
+-------------------------------
+
+Model_1. lr3e-4 epoch 50
+=== TEST METRICS (from PNG) ===
+micro mIoU  : 0.9881
+macro(all)  : 0.7650
+macro(FG)   : 0.6884
+per-class:
+  [0] background | IoU 0.9946 | P 0.9980 | R 0.9966 | F1 0.9973 | support 30286035
+  [1] PV_normal  | IoU 0.7312 | P 0.8007 | R 0.8939 | F1 0.8447 | support 310577
+  [2] PV_heater  | IoU 0.5627 | P 0.8175 | R 0.6435 | F1 0.7202 | support 76301
+  [3] PV_pool    | IoU 0.7713 | P 0.8341 | R 0.9111 | F1 0.8709 | support 251887
+
+Model_2. lr3.2e-4 epoch 50
+=== TEST METRICS (from PNG) ===
+micro mIoU  : 0.9870
+macro(all)  : 0.7539
+macro(FG)   : 0.6737
+per-class:
+  [0] background | IoU 0.9944 | P 0.9982 | R 0.9962 | F1 0.9972 | support 30286035
+  [1] PV_normal  | IoU 0.6955 | P 0.7584 | R 0.8933 | F1 0.8204 | support 310577
+  [2] PV_heater  | IoU 0.5859 | P 0.7909 | R 0.6933 | F1 0.7389 | support 76301
+  [3] PV_pool    | IoU 0.7398 | P 0.8296 | R 0.8724 | F1 0.8504 | support 251887
+
+Model_3. lr3.5e-4 epoch 80
+=== TEST METRICS (from PNG) ===
+micro mIoU  : 0.9883
+macro(all)  : 0.7693
+macro(FG)   : 0.6941
+per-class:
+  [0] background | IoU 0.9950 | P 0.9979 | R 0.9971 | F1 0.9975 | support 30286035
+  [1] PV_normal  | IoU 0.7232 | P 0.7932 | R 0.8911 | F1 0.8393 | support 310577
+  [2] PV_heater  | IoU 0.6084 | P 0.8194 | R 0.7027 | F1 0.7566 | support 76301
+  [3] PV_pool    | IoU 0.7507 | P 0.8650 | R 0.8504 | F1 0.8576 | support 251887
+
+Model_4. lr2.8e_4 epoch 80 
+=== TEST METRICS (from PNG) ===
+micro mIoU  : 0.9883
+macro(all)  : 0.7598
+macro(FG)   : 0.6813
+per-class:
+  [0] background | IoU 0.9951 | P 0.9978 | R 0.9972 | F1 0.9975 | support 30286035
+  [1] PV_normal  | IoU 0.7104 | P 0.7961 | R 0.8684 | F1 0.8307 | support 310577
+  [2] PV_heater  | IoU 0.5613 | P 0.7843 | R 0.6638 | F1 0.7190 | support 76301
+  [3] PV_pool    | IoU 0.7723 | P 0.8686 | R 0.8744 | F1 0.8715 | support 251887
+
+
+Model_5. lr2.5e-4 epoch 80

@@ -1,0 +1,1 @@
+**Path**: `/shared/data/climateplus2025/Prediction_for_poster_3_images_nnUnet_1024_Nov21`

@@ -1,0 +1,17 @@
+# Post-Processing:Polygonization (large-scale)
+
+* The process polygonizes the JSON-formatted predictions, computes centroids, and converts them to CRS and GPS coordinates.
+
+* These files were refactored to process large-scale datasets.
+
+* To extract merged `.csv`, run stage1 -> stage2 -> stage4 (The output is delievered to the economometric team)
+`.gpkg` files are required for evaluation and subsequent post-processing 
+
+
+**Path:** `/shared/data/climateplus2025/Postprocessing_EntireDataset_CapeTown_Image_2018_2023_Mask2Former_1024_Nov29`
+
+- `post_processing_stage_1_1129.py` : Loads prediction tiles(`.JSONL`), stitches them into full-size(12500*12500) maps, normalizes coordinates from [y, x] to (x, y), performs polygonization, computes polygon areas, and writes unified JSON and polygon CSV outputs.
+- `post_processing_stage_2_0826.py` : Adds pixel, CRS, and GPS coordinates to each polygon in the CSV and saves the updated file, with auto-resume for batch processing.
+- `post_processing_stage_3_1017.py` : Converts CSV files into GeoPackage layers by rebuilding polygons from CRS vertex columns, keeping only essential attributes, sanitizing field names, and writing clean geometries to GPKG
+- `post_processing_stage_4_0827.py` : Merges CSV files from stage2 into one unified CSV using a consistent column order and chunked processing.
+
