@@ -4,20 +4,20 @@ This converts pixel-level predictions into instance-level outputs and applies ad
 The pipeline consists of four stages:
 
 **1. Polygonization (Connect Adjacent Pixels)**
-**2. Group Neighboring Polygons**
-**3. Drop small objects**
+**2. Grouping Neighboring Polygons**
+**3. Dropping small objects**
 **4. Building footprint filtering**
 
 * The combination of **steps 1+2+3** provides the most balanced results, and performance is evaluated at each cumulative stage (1 or 1+2 or 1+2+3 or 1+2+3+4)
 
 * The `.gpkg` files generated at each stage, enabling visualization in QGIS
 
-    <img src="/Users/ilseoplee/SHS_detection/images/Sample_Visualization.png" width="800" height="350">
+    <img width="1497" height="676" alt="Image" src="https://github.com/user-attachments/assets/177f9bc8-fa76-406a-b16c-6e23d4e60f80" />
 
 * The econometric pipeline receives a single merged prediction `CSV` from `post_processing_stage_4_0827.py` and independently applies both Drop small objects (Stage3) and Building footprint filtering (Stage4).
 **Path:** `/shared/data/climateplus2025/Postprocessing_EntireDataset_CapeTown_Image_2018_2023/post_processing_stage_4_0827.py`
 
-#### ==[1] Polygonization(Connect Adjacent Pixels)==
+#### ✅[1] Polygonization(Connect Adjacent Pixels)
 
 In this Stage 1, processing and evaluation were implemented in separate files, whereas all subsequent stages were executed within a single file.
 
@@ -40,14 +40,14 @@ This consist of 3 files in order:
 
 
 
-#### [1]Polygonization + ==[2]Group neighboring polygons==
+#### [1]Polygonization + ✅[2]Groupping neighboring polygons
 
 Fragments split at map boundaries are typically within 2 pixels. so, polygons of the same class that are within 2 pixels of each other are merged.
 
 **File:** `evaluation_instance_v1_neighboring.ipynb`
 **path:** `/shared/data/climateplus2025/Post_Processing_with_Evaluation_1024_Nov20/1+2.Group_neighboring_polygons/evaluation_instance_v1_neighboring.ipynb`
 
-#### [1]Polygonization + [2]Groupd neighboring polygons + ==[3]Drop small object== → Most Balanced combination
+#### [1]Polygonization + [2]Groupping neighboring polygons + ✅[3]Dropping small object → Most Balanced combination
 
 Objects smaller than 1.7 m² (the smallest true target size) are treated as false positives.
 - *Note: Real objects may appear smaller, so a lower threshold such as 0.816 m² is also feasible based on GT distribution.*
@@ -55,7 +55,7 @@ Objects smaller than 1.7 m² (the smallest true target size) are treated as fals
 **File:** `evaluation_instance_v1_drop_small_polygons.ipynb`
 **Path:** `/shared/data/climateplus2025/Post_Processing_with_Evaluation_1024_Nov20/1+2+3.Drop_small_polygons/evaluation_instance_v1_drop_small_polygons.ipynb`
 
-#### [1]Polygonization + [2]Groupd neighboring polygons + [3]Dropping small objects + ==[4]Building footpring filtering==
+#### [1]Polygonization + [2]Groupping neighboring polygons + [3]Dropping small objects + ✅[4]Building footpring filtering
 
 Predicted objects overlapping less than 80% with the Cape Town building footprint dataset are dropped as false positives.
 
@@ -81,7 +81,7 @@ Overall Metrics: 'Precision': 0.6384065372829418, 'Recall': 0.7275902211874272, 
 | PV_heater  | 221 | 110 | 82 | 0.6676    | 0.7293  |
 | PV_pool    | 161 | 110 | 63  | 0.5940    | 0.7187  |
 
-**[1] + [2] Group_neighboring_polygons (Threshold : 0.16m = 2pixels)**
+**[1] + [2] Groupping_neighboring_polygons (Threshold : 0.16m = 2pixels)**
 
 Overall Metrics: 'Precision': 0.6921373200442967, 'Recall': 0.7275902211874272, 'TP': 625, 'FP': 278, 'FN': 234
 
@@ -112,6 +112,16 @@ Overall Metrics: 'Precision': 0.8219584569732937, 'Recall': 0.642691415313225, '
 | PV_pool    | 149 |  37 | 77  | 0.8010    | 0.6592  |
 
 ------
-<img src="/Users/ilseoplee/SHS_detection/images/evaluation.png" width="1100" height="500">
 
-<img src="/Users/ilseoplee/SHS_detection/images/evaluation_indepth.png" width="1100" height="500">
+#### Models' Overall Performance Evaluation 
+* *Note: S1 =  [1]Polygonization, S2 =  [1]+[2], S3 =  [1]+[2]+[3], S4 = [1]+[2]+[3]+[4]*
+
+* S1–S3 reduce false positives, but S4 raises false negatives due to true positives being removed by the building filter.
+
+
+
+<img width="614" height="504" alt="Image" src="https://github.com/user-attachments/assets/516afdd5-dea5-49f9-99c9-f44d699c512d" />
+
+#### Models' Performance Evaluation by class (S3 Only)
+
+<img width="1022" height="612" alt="Image" src="https://github.com/user-attachments/assets/8872f7ff-c95b-41ff-87b3-a0ab023a95fd" />
