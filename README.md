@@ -1,6 +1,8 @@
 # Energy Transition During Energy Crisis: Cape Town's Experience
 ### Multi-Class Computer Vision Model for Solar Home Energy System Detection
 
+As of Dec.01
+
 **Overview**
 
 * This project builds a **computer vision pipeline** to detect rooftop **solar home energy systems** in Cape Town, South Africa. Because of load-shedding, many households have added private solar installations, but only around one-third are formally registered. The model classifies **three types** of systems(solar panels, solar water heaters, and solar pool heaters), and estimates their **locations** and **sizes** to approximate total generation capacity. These insights can help study energy inequality and how rooftop solar is distributed across the city.
@@ -38,7 +40,7 @@
 
 *Remarks: S1 = Step1, S2= Step1~2, S3=Step1~3, S4=Step1~4*
 
-**File Structure(TBD)** 
+**File Structure** 
 
 ```
 ├─ 0.Data_Preparation
@@ -57,4 +59,5 @@
 │  ├─ Post-Processing with Evaluation
 │  └─ Post-Processing_Scaleup
 └─ requirements.txt
+
 ```
