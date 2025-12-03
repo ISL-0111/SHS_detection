@@ -4,7 +4,7 @@
 
 This code integrates and refines aerial imagery and annotations for training. It improves the data preparation pipeline developed by the Bass Connections team in 2024, available at https://github.com/slaicha/cape_town_segmentation. The final output of this process is a GPKG (GeoPackage) file, containing about 19,000 annotations corresponding to 268 annotation files and approximately 19,000 raw annotations. The quality of these annotations is subsequently assessed in the next stage, titled Annotation Checking.
 
-*Note: Note: For prediction, complete Step 1 (Download data) and then proceed to Pre-Processing for image cropping.
+*Note: For prediction, complete Step 1 (Download data) and then proceed to Pre-Processing for image cropping.
 ----
 ## Step 1: Download data
 
