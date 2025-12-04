@@ -9,7 +9,7 @@ This code prepares the dataset for model training
 
 * Import `.GPKG` file (`final_annotations_PV_all_types_5K_cleaned.gpkg`)
 * Convert the annotated polygons into pixel coordinates aligned with each corresponding GeoTIFF image, preparing them for image tiling and mask generation.
-* Crop the raw `.tif` aerial imagery(12500*12500) into target patch sizes(e.g., 1024*1024)
+* Crop the raw `.tif` aerial imagery(12500*12500) into target patch sizes(e.g., 1024 x 1024)
 
 ```
 CapeTown_Image_2023_Training_1024_Oct.28 (/shared/data/climateplus2025/CapeTown_Image_2023_Training_1024_Oct.28)
