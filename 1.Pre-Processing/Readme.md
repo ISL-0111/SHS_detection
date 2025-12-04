@@ -75,13 +75,15 @@ For **1024 x 1024** coppred images,
 * This folders contain the cropped aerial imagery corresponding to the models
 **Note:320, and 1024 are patch size**
 
-/shared/data/climateplus2025/` or `/data/data/climateplus2025/
+```
+/shared/data/climateplus2025/ or /data/data/climateplus2025/
 ├── CapeTown_Image_2019_cropped_320
 ├── CapeTown_Image_2020_cropped_320
 ├── CapeTown_Image_2021_cropped_320
 ├── CapeTown_Image_2022_cropped_320
 ├── CapeTown_Image_2023_cropped_320
 ├── CapeTown_Image_2023_cropped_1024
+```
 
 -----
 #### Appendix
