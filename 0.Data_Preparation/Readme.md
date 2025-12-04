@@ -16,6 +16,7 @@ or refer to `/Users/ilseoplee/cape_town_annotation_checker/1.db_pipeline/downloa
 * `Aerial Imagery`: Cape Town, 12500 * 12500 size, 8cm/pixel (around 55GB for 2023)
 
 -----
+```
 CapeTown_Image_2023_Training_1024_Oct.28
 ├── ...
 ├── ...
@@ -24,7 +25,7 @@ CapeTown_Image_2023_Training_1024_Oct.28
 │   └── test/
 │       ├── images/
 │       └── masks/
-
+```
 
 -----
 
