@@ -62,4 +62,8 @@ As of Dec.01
 └─ requirements.txt
 
 ```
+**Visualization**
 
+<img width="1164" height="644" alt="Image" src="https://github.com/user-attachments/assets/132868b2-6b17-419b-bd56-c6a7f94bc573" />
+
+<img width="1077" height="585" alt="Image" src="https://github.com/user-attachments/assets/b41200c0-e2bf-49ea-8007-90b8658347ed" />
