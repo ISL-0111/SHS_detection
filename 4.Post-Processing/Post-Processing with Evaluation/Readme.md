@@ -132,7 +132,7 @@ Overall Metrics: 'Precision': 0.8219584569732937, 'Recall': 0.642691415313225, '
 
 <img width="614" height="504" alt="Image" src="https://github.com/user-attachments/assets/516afdd5-dea5-49f9-99c9-f44d699c512d" />
 
-#### Models' Performance Evaluation by class (S3 Only)
+#### Models' Performance Evaluation by class (Stage [1] + [2] + [3] Case)
 
 <img width="1022" height="612" alt="Image" src="https://github.com/user-attachments/assets/8872f7ff-c95b-41ff-87b3-a0ab023a95fd" />
 
