@@ -4,7 +4,8 @@
 
 This code integrates and refines aerial imagery and annotations for training. It improves the data preparation pipeline developed by the Bass Connections team in 2024, available at https://github.com/slaicha/cape_town_segmentation. The final output of this process is a GPKG (GeoPackage) file, containing about 19,000 annotations corresponding to 268 annotation files and approximately 19,000 raw annotations. The quality of these annotations is subsequently assessed in the next stage, titled Annotation Checking.
 
-*Note: Note: For prediction, complete Step 1 (Download data) and then proceed to Pre-Processing for image cropping.
+*Note: For prediction, complete Step 1 (Download data) and then proceed to Pre-Processing for image cropping.
+
 ----
 ## Step 1: Download data
 
@@ -15,6 +16,7 @@ or refer to `/Users/ilseoplee/cape_town_annotation_checker/1.db_pipeline/downloa
 * `Aerial Imagery`: Cape Town, 12500 * 12500 size, 8cm/pixel (around 55GB for 2023)
 
 -----
+```
 CapeTown_Image_2023_Training_1024_Oct.28
 ├── ...
 ├── ...
@@ -23,7 +25,7 @@ CapeTown_Image_2023_Training_1024_Oct.28
 │   └── test/
 │       ├── images/
 │       └── masks/
-
+```
 
 -----
 

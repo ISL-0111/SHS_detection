@@ -1,6 +1,8 @@
 # Energy Transition During Energy Crisis: Cape Town's Experience
 ### Multi-Class Computer Vision Model for Solar Home Energy System Detection
 
+As of Dec.01
+
 **Overview**
 
 * This project builds a **computer vision pipeline** to detect rooftop **solar home energy systems** in Cape Town, South Africa. Because of load-shedding, many households have added private solar installations, but only around one-third are formally registered. The model classifies **three types** of systems(solar panels, solar water heaters, and solar pool heaters), and estimates their **locations** and **sizes** to approximate total generation capacity. These insights can help study energy inequality and how rooftop solar is distributed across the city.
@@ -16,12 +18,13 @@
 **Post-processing**
 
 * These segmentation outputs are polygonized and are merged with geospatial data to create instance-level information, including GPS and CRS coordinates, and surface area(m^2). This process allows the model to identify rooftop locations and quantify solar panel areas for further analysis.
-<br>
-* The post-processing workflow is as follows:
-    * Step1. **Polygonization**: Adjacent pixels belonging to the same predicted class are grouped into polygonal objects.
-    * Step2. **Grouping adjacent polygons**: To reconnect objects split across tile boundaries, polygons within 2 pixels of each other are merged if they belong to the same class.
-    * Step3. **Small-object removal**: Small detections (≤ 1.7 m²) are removed to eliminate noise.
-    * Step4. **Building-footprint filtering**: Predictions falling outside external building-footprint polygons are removed to ensure detections correspond to actual rooftops.
+
+
+* The post-processing workflow is as follows: <br>
+       * Step1. **Polygonization**: Adjacent pixels belonging to the same predicted class are grouped into polygonal objects. <br>
+       * Step2. **Grouping adjacent polygons**: To reconnect objects split across tile boundaries, polygons within 2 pixels of each other are merged if they belong to the same class. <br>
+       * Step3. **Small-object removal**: Small detections (≤ 1.7 m²) are removed to eliminate noise. <br>
+       * Step4. **Building-footprint filtering**: Predictions falling outside external building-footprint polygons are removed to ensure detections correspond to actual rooftops. <br>
     
 -----
 
@@ -33,12 +36,13 @@
 * Three different models were evaluated, including Mask2Former with a 1024 × 1024 input size as described above.
 * The Mask2Former (1024 × 1024) model, combined with Post-processing Steps 1, 2, and 3 produced the most balanced results.
 * Its overall performance was: *'Precision' = 77.51%, 'Recall'= 72.64%*
+* For more details, please refer to `4.Post-Processing/Post-Processing with Evaluation/Readme.md`
 
 <img src="images/evaluation.png" width="500" height="500">
 
-*Remarks: S1 = Step1, S2= Step1~2, S3=Step1~3, S4=Step1~4*
+*Remarks: S1 = Step1, S2= Step1+2, S3=Step1+2+3, S4=Step1+2+3+4*
 
-**File Structure(TBD)** 
+**File Structure** 
 
 ```
 ├─ 0.Data_Preparation
@@ -57,4 +61,12 @@
 │  ├─ Post-Processing with Evaluation
 │  └─ Post-Processing_Scaleup
 └─ requirements.txt
+
 ```
+**Visualization**
+
+<img width="1164" height="644" alt="Image" src="https://github.com/user-attachments/assets/132868b2-6b17-419b-bd56-c6a7f94bc573" />
+
+<img width="1077" height="585" alt="Image" src="https://github.com/user-attachments/assets/b41200c0-e2bf-49ea-8007-90b8658347ed" />
+
+
