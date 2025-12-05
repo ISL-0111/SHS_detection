@@ -19,11 +19,11 @@ As of Dec.01
 
 * These segmentation outputs are polygonized and are merged with geospatial data to create instance-level information, including GPS and CRS coordinates, and surface area(m^2). This process allows the model to identify rooftop locations and quantify solar panel areas for further analysis.
 <br>
-* The post-processing workflow is as follows:
-    * Step1. **Polygonization**: Adjacent pixels belonging to the same predicted class are grouped into polygonal objects.
-    * Step2. **Grouping adjacent polygons**: To reconnect objects split across tile boundaries, polygons within 2 pixels of each other are merged if they belong to the same class.
-    * Step3. **Small-object removal**: Small detections (≤ 1.7 m²) are removed to eliminate noise.
-    * Step4. **Building-footprint filtering**: Predictions falling outside external building-footprint polygons are removed to ensure detections correspond to actual rooftops.
+* The post-processing workflow is as follows: <br>
+    * Step1. **Polygonization**: Adjacent pixels belonging to the same predicted class are grouped into polygonal objects. <br>
+    * Step2. **Grouping adjacent polygons**: To reconnect objects split across tile boundaries, polygons within 2 pixels of each other are merged if they belong to the same class. <br>
+    * Step3. **Small-object removal**: Small detections (≤ 1.7 m²) are removed to eliminate noise. <br>
+    * Step4. **Building-footprint filtering**: Predictions falling outside external building-footprint polygons are removed to ensure detections correspond to actual rooftops. <br>
     
 -----
 
@@ -67,3 +67,4 @@ As of Dec.01
 <img width="1164" height="644" alt="Image" src="https://github.com/user-attachments/assets/132868b2-6b17-419b-bd56-c6a7f94bc573" />
 
 <img width="1077" height="585" alt="Image" src="https://github.com/user-attachments/assets/b41200c0-e2bf-49ea-8007-90b8658347ed" />
+
