@@ -29,7 +29,7 @@
 *Note: Because IoU and centroid-distance thresholds influence results, it is recommended to perform a **grid search** to identify optimal threshold values and to **visualize** results for cross-validation.*
 
 **(Sample) Grid search output**
-<img width="614" height="504" alt="Image" src="https://github.com/user-attachments/assets/7d962e0b-0824-40cf-8fb1-918014e59af7" />
+<img width="985" height="414" alt="Image" src="https://github.com/user-attachments/assets/bb75e2c8-fe7c-49d4-bb96-1c5dbbf0cce6" />
 
 
 **Visualization**
@@ -41,8 +41,8 @@
 <br>
 - To launch the application, run it through the GAIA CLI with the command below. After execution, open the assigned local port in Firefox (Safari is not supported).
 
-    ```
+    
     /home/il72/.local/bin/streamlit run /shared/data/climateplus2025/Installation_year_detection_POC_Dec1/Visualization/app.py --server.port 8502 --server.address 0.0.0.0
-    ```
+    
 
  
