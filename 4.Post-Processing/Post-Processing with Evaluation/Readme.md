@@ -106,9 +106,9 @@ Overall Metrics: 'Precision': 0.6921373200442967, 'Recall': 0.7275902211874272, 
 
 | Class      | TP  | FP  | FN  | *Precision* | *Recall*  |
 |------------|-----|-----|-----|-----------|---------|
-| PV_normal  | 243 | 68 | 89  | 0.7813    | ==0.7319==  |
-| PV_heater  | 220 | 62 | 83 | 0.7801    | ==0.7260==  |
-| PV_pool    | 161 | 51 | 63  | 0.7594    | ==0.7187==  |
+| PV_normal  | 243 | 68 | 89  | 0.7813    | **0.7319**  |
+| PV_heater  | 220 | 62 | 83 | 0.7801    | **0.7260**  |
+| PV_pool    | 161 | 51 | 63  | 0.7594    | **0.7187**  |
 
 **[1] Polygonization + [2] Groupping neighboring polygons + [3] Dropping small objects + [4] Building Footpring Filtering**
 
