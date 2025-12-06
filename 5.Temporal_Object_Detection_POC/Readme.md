@@ -4,7 +4,7 @@
 
 **Time-series analysis**
 
-**File:** `Installation_year_detection_Dec2.ipynb`
+**File:** `Installation_year_detection_Dec2.ipynb` <br>
 **Path:** `/shared/data/climateplus2025/Installation_year_detection_POC_Dec1/temporal_matching_results/Installation_year_detection_Dec2.ipynb`
 
 - This proof-of-concept code performs temporal object detection using .gpkg files generated from the notebook located at:
