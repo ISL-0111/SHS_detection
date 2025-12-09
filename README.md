@@ -36,6 +36,13 @@ As of Dec.01
 * Three different models were evaluated, including Mask2Former with a 1024 × 1024 input size as described above.
 * The Mask2Former (1024 × 1024) model, combined with Post-processing Steps 1, 2, and 3 produced the most balanced results.
 * Its overall performance was: *'Precision' = 77.51%, 'Recall'= 72.64%*
+
+| Class      | TP  | FP  | FN  | *Precision* | *Recall*  |
+|------------|-----|-----|-----|-----------|---------|
+| PV_normal(Solar Panel)  | 243 | 68 | 89  | **0.7813**    | **0.7319**  |
+| PV_heater(Water Heater)  | 220 | 62 | 83 | **0.7801**    | **0.7260**  |
+| PV_pool(Pool Heater)    | 161 | 51 | 63  | **0.7594**    | **0.7187**  |
+
 * For more details, please refer to `4.Post-Processing/Post-Processing with Evaluation/Readme.md`
 
 <img src="images/evaluation.png" width="500" height="500">
@@ -68,5 +75,6 @@ As of Dec.01
 <img width="1164" height="644" alt="Image" src="https://github.com/user-attachments/assets/132868b2-6b17-419b-bd56-c6a7f94bc573" />
 
 <img width="1077" height="585" alt="Image" src="https://github.com/user-attachments/assets/b41200c0-e2bf-49ea-8007-90b8658347ed" />
+
 
 
