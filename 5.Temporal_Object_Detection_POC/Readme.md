@@ -41,8 +41,9 @@
 <br>
 - To launch the application, run it through the GAIA CLI with the command below. After execution, open the assigned local port in Firefox (Safari is not supported).
 
-    
+
     /home/il72/.local/bin/streamlit run /shared/data/climateplus2025/Installation_year_detection_POC_Dec1/Visualization/app.py --server.port 8502 --server.address 0.0.0.0
     
 
+![Image](https://github.com/user-attachments/assets/9b9e7228-6c73-4303-a498-a6abe50979c9)
  
