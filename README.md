@@ -33,6 +33,7 @@ As of Dec.01
 -----
 
 **Test result**
+* An evaluation was performed on 889 objects from three unseen images, including 337 PV_normal, 316 PV_heater, and 236 PV_pool.
 * Three different models were evaluated, including Mask2Former with a 1024 × 1024 input size as described above.
 * The Mask2Former (1024 × 1024) model, combined with Post-processing Steps 1, 2, and 3 produced the most balanced results.
 * Its overall performance was: *'Precision' = 77.51%, 'Recall'= 72.64%*
@@ -75,6 +76,7 @@ As of Dec.01
 <img width="1164" height="644" alt="Image" src="https://github.com/user-attachments/assets/132868b2-6b17-419b-bd56-c6a7f94bc573" />
 
 <img width="1077" height="585" alt="Image" src="https://github.com/user-attachments/assets/b41200c0-e2bf-49ea-8007-90b8658347ed" />
+
 
 
 
